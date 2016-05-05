@@ -17,3 +17,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Share+Tech+Mono);
+
+h1 {
+  font-family: 'Share Tech Mono', sans-serif;
+}
