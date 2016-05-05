@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Products</h1>
+<h1>Products for Sale</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Main Photo</th>
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
@@ -18,15 +19,16 @@
   <tbody>
     <% @products.each do |admin_product| %>
       <tr>
+        <td><%= image_tag admin_product.avatar.url (:thumb) %></td>
         <td><%= admin_product.name %></td>
         <td><%= admin_product.price %></td>
         <td><%= admin_product.quantity %></td>
         <td><%= admin_product.description %></td>
-        <td><%= admin_product.brand_id %></td>
-        <td><%= admin_product.category_id %></td>
-        <td><%= link_to 'Show', admin_product %></td>
-        <td><%= link_to 'Edit', edit_admin_product_path(admin_product) %></td>
-        <td><%= link_to 'Destroy', admin_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= admin_product.brand.try(:name) %></td>
+        <td><%= admin_product.category.try(:name) %></td>
+        <td><%= link_to (fa_icon "eye"), admin_product_path(admin_product) %></td>
+        <td><%= link_to (fa_icon "pencil-square-o"), edit_admin_product_path(admin_product) %></td>
+        <td><%= link_to (fa_icon "trash-o"), admin_product_path(admin_product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Product', new_admin_product_path %>
+<%= link_to 'New Product', new_admin_product_path, class: 'btn btn-large btn-info' %>

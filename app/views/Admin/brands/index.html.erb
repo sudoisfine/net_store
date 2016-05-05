@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Brands</h1>
+<h1>Service Providers</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,9 +14,9 @@
     <% @brands.each do |admin_brand| %>
       <tr>
         <td><%= admin_brand.name %></td>
-        <td><%= link_to 'Show', admin_brand %></td>
-        <td><%= link_to 'Edit', edit_admin_brand_path(admin_brand) %></td>
-        <td><%= link_to 'Destroy', admin_brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to (fa_icon "eye"), admin_brand_path(admin_brand) %></td>
+        <td><%= link_to (fa_icon "pencil-square-o"), edit_admin_brand_path(admin_brand) %></td>
+        <td><%= link_to (fa_icon "trash-o"), admin_brand_path(admin_brand), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Brand', new_admin_brand_path %>
+<%= link_to 'New Brand', new_admin_brand_path, class: 'btn btn-large btn-info' %>

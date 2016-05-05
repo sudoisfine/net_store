@@ -32,7 +32,7 @@ class Admin::CategoriesController < ApplicationController
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
-        format.json { render json: admin_category_url(@category.errors), status: :unprocessable_entity }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +69,6 @@ class Admin::CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.fetch(:category, {})
+      params.require(:category).permit(:name)
     end
 end
