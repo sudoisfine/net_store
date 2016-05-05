@@ -7,7 +7,11 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true, length: {minimum: 1}, numericality: { only_integer: true }
   validates :description, presence: true
 
-  has_attached_file :avatar, :styles => { :medium => "400x400", :thumb => "150x150"}, :default_url => "missing.png"
+  has_attached_file :avatar, :styles => {
+    :medium => "400x400#",
+    :thumb => "150x150>"
+    },
+    :default_url => "missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 end
