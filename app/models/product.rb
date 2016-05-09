@@ -14,4 +14,8 @@ class Product < ActiveRecord::Base
     :default_url => "missing_:style.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def self.search_by_name_or_description(string)
+    where("name LIKE ? OR description LIKE ?", "%#{string}%", "%#{string}%")
+  end
+
 end
