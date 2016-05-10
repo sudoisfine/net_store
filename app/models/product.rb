@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   belongs_to :brand
   belongs_to :category
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :name, presence: true, length: {minimum: 1}
   validates :price, presence: true, numericality: true, :format => { :with => /\A\d{1,4}(\.\d{0,2})?\z/ }
@@ -18,4 +20,13 @@ class Product < ActiveRecord::Base
     where("name LIKE ? OR description LIKE ?", "%#{string}%", "%#{string}%")
   end
 
+private
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
 end
