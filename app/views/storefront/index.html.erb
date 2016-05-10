@@ -37,12 +37,18 @@
               <h4 class="modal-title" id="myModalLabel"> <%= product.name %> </h4>
             </div>
             <div class="modal-body">
-              <p><%= number_to_currency product.price %></p>
-              <p><%= product.description %></p>
+              <div class="row">
+                <div class="col-sm-4"><%= image_tag product.avatar.url (:thumb) %></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <p><%= number_to_currency product.price %></p>
+                    <p><%= product.description %></p>
+                  </div>
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
