@@ -30,14 +30,14 @@ def update
     @line_item.destroy
     redirect_to edit_cart_path(@cart), notice: "Item removed from cart."
   elsif @line_item.update(line_item_params)
-    redirect_to edit_cart_path(@cart), notice: "#{@line_item.product_name} quantity updated."
+    redirect_to edit_cart_path(@cart), notice: "#{@line_item.product.name} quantity updated."
   else redirect_to edit_cart_path(@cart), alert: "Could not update quantity."
   end
 end
 
 private
 
-def line_items_params
+def line_item_params
   params.require(:line_item).permit(:quantity)
 end
 
