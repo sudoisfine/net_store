@@ -4,7 +4,6 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1 class = "text-center">Shop the Internet!</h1>
 <% if params[:category_id] %>
   <h3> All <%= @category.name.capitalize %> </h3>
 <% else %>
@@ -44,24 +43,22 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="col-sm-4"><%= image_tag product.avatar.url (:thumb) %></div>
+              <div class="col-xs-5">
+                  <p><%= product.description %></p>
+                    <h3><%= number_to_currency product.price %></h3>
+                    <%= button_to "Add to Cart", line_items_path(product_id: product), class: "btn btn-success btn-sm" %>
+                    </div>
+                <div class="col-xs-7"><%= image_tag product.avatar.url (:medium), class: "img-responsive" %></div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <p><%= number_to_currency product.price %></p>
-                    <p><%= product.description %></p>
-                    <div class="modal-footer">
-             <%= button_to "Add to Cart", line_items_path(product_id: product), class: "btn btn-success btn-sm" %></span>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
 </body>
 
