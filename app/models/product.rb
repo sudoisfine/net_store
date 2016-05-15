@@ -10,8 +10,9 @@ class Product < ActiveRecord::Base
   validates :description, presence: true
 
   has_attached_file :avatar, :styles => {
-    :medium => "250x250>",
-    :thumb => "100x100>"
+    :large => "350x350>",
+    :medium => "250x250#",
+    :thumb => "100x100#"
     },
     :default_url => "missing_:style.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
