@@ -2,6 +2,7 @@
 
 <%= render 'search_form' %>
 
+<div class="tech">
 <p id="notice"><%= notice %></p>
 
 <% if params[:category_id] %>
@@ -9,6 +10,7 @@
 <% else %>
   <h3> All Products </h3>
 <% end %>
+</div>
 
 <div class = "container-fluid">
   <div class = "row">
