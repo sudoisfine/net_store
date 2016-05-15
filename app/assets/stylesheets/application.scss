@@ -21,4 +21,13 @@
 
 h1 {
   font-family: 'Share Tech Mono', sans-serif;
+  color: #fff;
+}
+
+body.main {
+  background: url("info.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
