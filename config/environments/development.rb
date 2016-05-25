@@ -1,18 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-config.paperclip_defaults = {
-      :storage => :s3,
-      :s3_credentials => {
-        :bucket => ENV.fetch('S3_BUCKET_NAME'),
-        :access_key_id => ENV.fetch('AWS_ACCESS_KEY_ID'),
-        :secret_access_key => ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-        :s3_region => ENV.fetch('AWS_REGION')
-      },
-      :s3_protocol => :https,
-      :url =>':s3_domain_url',
-      :path => ":class/:attachment/:id_partition/:style/:filename"
-    }
+Paperclip.options[:command_path] = "/usr/local/bin"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -31,6 +20,8 @@ config.paperclip_defaults = {
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.delivery_method = :letter_opener
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
